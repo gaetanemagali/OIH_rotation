@@ -1,0 +1,62 @@
+#https://dbpedia.org/sparql will retrieve data from the DBpedia dataset
+# end point of the OIH graph : http://graph.oceaninfohub.org/blazegraph/namespace/oih/sparql
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> #RDF vocabulary is used
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> #Schema vocabulary is used
+PREFIX schema: <http://schema.org/>
+
+#First test------------------
+SELECT * WHERE {
+  ?sub ?pred ?obj . #subject, predicate, object retrieving all the triples in a dataset
+} LIMIT 10 #max 10 results
+
+#Trial: I want to retrieve all microbial data which is available on the IOH---------------
+
+SELECT ?dataset ?name ?description ?keywords
+WHERE {
+  ?dataset a schema:Dataset .
+  OPTIONAL { ?dataset schema:name ?name . }
+  OPTIONAL { ?dataset schema:description ?description . }
+  OPTIONAL { ?dataset schema:keywords ?keywords . }
+  FILTER (
+    CONTAINS(LCASE(STR(?name)), "microbial") ||
+    CONTAINS(LCASE(STR(?description)), "microbial") ||
+    CONTAINS(LCASE(STR(?keywords)), "microbial")
+  )
+}
+LIMIT 10
+
+
+#The same can be done for e.g. to look for datasets related to biofuels 
+SELECT ?dataset ?name ?description ?keywords
+WHERE {
+  ?dataset a schema:Dataset .
+  OPTIONAL { ?dataset schema:name ?name . }
+  OPTIONAL { ?dataset schema:description ?description . }
+  OPTIONAL { ?dataset schema:keywords ?keywords . }
+  FILTER (
+    CONTAINS(LCASE(STR(?name)), "biofuels") ||
+    CONTAINS(LCASE(STR(?description)), "biofuels") ||
+    CONTAINS(LCASE(STR(?keywords)), "biofuels")
+  )
+}
+LIMIT 10
+
+
+#Expanding the search 
+SELECT ?dataset ?name ?description ?keywords
+WHERE {
+  ?dataset a schema:Dataset .
+  OPTIONAL { ?dataset schema:name ?name . }
+  OPTIONAL { ?dataset schema:description ?description . }
+  OPTIONAL { ?dataset schema:keywords ?keywords . }
+  FILTER (
+    (regex(?name, "biofuel|bioenergy|biomass", "i") ||
+     regex(?description, "biofuel|bioenergy|biomass", "i") ||
+     regex(?keywords, "biofuel|bioenergy|biomass", "i")) &&
+    (regex(?name, "microbe|microbial|bacteria|fungi|microorganism", "i") ||
+     regex(?description, "microbe|microbial|bacteria|fungi|microorganism", "i") ||
+     regex(?keywords, "microbe|microbial|bacteria|fungi|microorganism", "i"))
+  )
+}
+LIMIT 10

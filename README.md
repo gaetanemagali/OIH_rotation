@@ -6,10 +6,6 @@ Subgoals (1):
 - Experiment with the SPARQL endpoint of the OIH/ODIS graph.
 
 
-## Setup
-
-To get started, clone this repository and follow the instructions below.
-
 ## Directory Structure
 
 - `documentation/`: Documentation files.

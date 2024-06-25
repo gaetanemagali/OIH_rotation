@@ -10,7 +10,7 @@ Subgoals (1):
 
 - `documentation/`: Documentation files.
 - `scripts/`: Scripts for SPARQL queries, Python data processing, etc.
-- `datafiles/`: Data files downloaded or generated during the project.
+
 
 ## SPARQL Queries
 

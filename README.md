@@ -14,7 +14,7 @@ When attempting to extract all the child clauses of bacterial and archaeal taxa 
 Some names still seemed unfamiliar, and there were still some acronyms for specific categories and some environmental descriptions like "blood" or "stool". Reviewing this entire list would require more time and manually checking for these unusual names.
 Instead, we relied on the different taxonomic levels from the most common marine microbes, as documented in the literature:
 
-/Users/gaetanemagali/OIH_rotation/documentation/Most_common_microbes.png 
+![Alt text](/Users/gaetanemagali/OIH_rotation/documentation/Most_common_microbes.png) 
 
 Overmann, J., Lepleux, C. (2016). Marine Bacteria and Archaea: Diversity, Adaptations, and Culturability. In: Stal, L., Cretoiu, M. (eds) The Marine Microbiome. Springer, Cham. [https://doi.org/10.1007/978-3-319-33000-6_2](https://doi.org/10.1007/978-3-319-33000-6_2)
 
